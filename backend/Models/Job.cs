@@ -25,11 +25,12 @@ namespace backend.Models
         public JobStatus? Status { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? AppliedAt { get; set; }
-        public DateTime? LastStatusUpdate { get; set; }
 
-        public int? RawDescriptionId { get; set; }
-        public JobDescriptionRaw? RawDescription { get; set; }
+        //public DateTime? AppliedAt { get; set; }
+        public DateTime? LastUpdatedAt { get; set; }
+
+        public int? JobDescriptionId { get; set; }
+        public JobDescription? JobDescription { get; set; }
 
         public int UserId { get; set; }
         public User User { get; set; } = null!;
