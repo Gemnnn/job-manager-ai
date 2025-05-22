@@ -70,13 +70,27 @@ namespace backend.Data
                 .HasForeignKey(p => p.CountryId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Job ↔ Industry (N:1)
+            modelBuilder.Entity<Job>()
+                .HasOne(j => j.Industry)
+                .WithMany(i => i.Jobs)
+                .HasForeignKey(j => j.IndustryId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            // Job ↔ Department (N:1)
+            modelBuilder.Entity<Job>()
+                .HasOne(j => j.Department)
+                .WithMany(d => d.Jobs)
+                .HasForeignKey(j => j.DepartmentId)
+                .OnDelete(DeleteBehavior.SetNull);
+
             // Job ↔ Skill (Many-to-Many through RequiredSkill)
             modelBuilder.Entity<RequiredSkill>()
                 .HasKey(rs => new { rs.JobId, rs.SkillId });
 
             modelBuilder.Entity<RequiredSkill>()
                 .HasOne(rs => rs.Job)
-                .WithMany(j => j.JobSkills)
+                .WithMany(j => j.RequiredSkill)
                 .HasForeignKey(rs => rs.JobId);
 
             modelBuilder.Entity<RequiredSkill>()
