@@ -16,6 +16,14 @@ namespace backend.Data
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Country> Countries { get; set; }
 
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Benefit> Benefits { get; set; }
+        public DbSet<Industry> Industries { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
+        public DbSet<RequiredSkill> RequiredSkills { get; set; }
+        public DbSet<JobBenefit> JobBenefits { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -61,6 +69,34 @@ namespace backend.Data
                 .WithMany(c => c.Provinces)
                 .HasForeignKey(p => p.CountryId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Job ↔ Skill (Many-to-Many through RequiredSkill)
+            modelBuilder.Entity<RequiredSkill>()
+                .HasKey(rs => new { rs.JobId, rs.SkillId });
+
+            modelBuilder.Entity<RequiredSkill>()
+                .HasOne(rs => rs.Job)
+                .WithMany(j => j.JobSkills)
+                .HasForeignKey(rs => rs.JobId);
+
+            modelBuilder.Entity<RequiredSkill>()
+                .HasOne(rs => rs.Skill)
+                .WithMany(s => s.RequiredSkills)
+                .HasForeignKey(rs => rs.SkillId);
+
+            // Job ↔ Benefit (Many-to-Many through JobBenefit)
+            modelBuilder.Entity<JobBenefit>()
+                .HasKey(jb => new { jb.JobId, jb.BenefitId });
+
+            modelBuilder.Entity<JobBenefit>()
+                .HasOne(jb => jb.Job)
+                .WithMany(j => j.JobBenefits)
+                .HasForeignKey(jb => jb.JobId);
+
+            modelBuilder.Entity<JobBenefit>()
+                .HasOne(jb => jb.Benefit)
+                .WithMany(b => b.JobBenefits)
+                .HasForeignKey(jb => jb.BenefitId);
         }
     }
 }
