@@ -1,5 +1,40 @@
-/backend/.vs/backend/CopilotIndices
-/backend/.vs/backend/FileContentIndex
-/backend/.vs/backend/v17
-/backend/.vs/ProjectEvaluation
-/backend/.vs/backend/DesignTimeBuild
+# Visual Studio & .NET Core Build Artifacts
+.vs/
+bin/
+obj/
+*.suo
+*.user
+*.pdb
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+TestResults/
+*.coverage
+*.coveragexml
+
+# IDE Specific Files
+.idea/
+.vscode/
+
+# Application Specific Files
+*.db
+*.mdf
+*.ldf
+*.log
+*.tmp
+*.bak
+*.orig
+*.swp
+
+# Environment Configuration Files
+.env
+.env.*
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+# Front-end/Web Assets (Remove if pure API backend)
+wwwroot/lib/
+wwwroot/dist/
+wwwroot/node_modules/
