@@ -41,7 +41,7 @@ namespace backend.Models
         public int UserId { get; set; }
         public User User { get; set; } = null!;
 
-        public ICollection<RequiredSkill> JobSkills { get; set; } = new List<RequiredSkill>();
+        public ICollection<RequiredSkill> RequiredSkill { get; set; } = new List<RequiredSkill>();
         public ICollection<JobBenefit> JobBenefits { get; set; } = new List<JobBenefit>();
     }
 
