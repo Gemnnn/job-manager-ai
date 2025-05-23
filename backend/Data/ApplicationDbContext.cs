@@ -111,6 +111,89 @@ namespace backend.Data
                 .HasOne(jb => jb.Benefit)
                 .WithMany(b => b.JobBenefits)
                 .HasForeignKey(jb => jb.BenefitId);
+
+
+            // Seeding initial data
+
+            // Counrties Seed Data
+            modelBuilder.Entity<Country>().HasData(
+                new Country { Id = 1, Name = "Canada" },
+                new Country { Id = 2, Name = "United States" }
+            );
+
+            // Provinces Seed Data
+
+            // Province Seed: Canada (ID: 101–120)
+            modelBuilder.Entity<Province>().HasData(
+                new Province { Id = 101, Name = "Alberta", CountryId = 1 },
+                new Province { Id = 102, Name = "British Columbia", CountryId = 1 },
+                new Province { Id = 103, Name = "Manitoba", CountryId = 1 },
+                new Province { Id = 104, Name = "New Brunswick", CountryId = 1 },
+                new Province { Id = 105, Name = "Newfoundland and Labrador", CountryId = 1 },
+                new Province { Id = 106, Name = "Nova Scotia", CountryId = 1 },
+                new Province { Id = 107, Name = "Ontario", CountryId = 1 },
+                new Province { Id = 108, Name = "Prince Edward Island", CountryId = 1 },
+                new Province { Id = 109, Name = "Quebec", CountryId = 1 },
+                new Province { Id = 110, Name = "Saskatchewan", CountryId = 1 },
+                new Province { Id = 111, Name = "Northwest Territories", CountryId = 1 },
+                new Province { Id = 112, Name = "Nunavut", CountryId = 1 },
+                new Province { Id = 113, Name = "Yukon", CountryId = 1 }
+            );
+
+            // Province Seed: United States (ID: 201–220)
+            modelBuilder.Entity<Province>().HasData(
+                new Province { Id = 201, Name = "Alabama", CountryId = 2 },
+                new Province { Id = 202, Name = "Alaska", CountryId = 2 },
+                new Province { Id = 203, Name = "Arizona", CountryId = 2 },
+                new Province { Id = 204, Name = "Arkansas", CountryId = 2 },
+                new Province { Id = 205, Name = "California", CountryId = 2 },
+                new Province { Id = 206, Name = "Colorado", CountryId = 2 },
+                new Province { Id = 207, Name = "Connecticut", CountryId = 2 },
+                new Province { Id = 208, Name = "Delaware", CountryId = 2 },
+                new Province { Id = 209, Name = "Florida", CountryId = 2 },
+                new Province { Id = 210, Name = "Georgia", CountryId = 2 },
+                new Province { Id = 211, Name = "Hawaii", CountryId = 2 },
+                new Province { Id = 212, Name = "Idaho", CountryId = 2 },
+                new Province { Id = 213, Name = "Illinois", CountryId = 2 },
+                new Province { Id = 214, Name = "Indiana", CountryId = 2 },
+                new Province { Id = 215, Name = "Iowa", CountryId = 2 },
+                new Province { Id = 216, Name = "Kansas", CountryId = 2 },
+                new Province { Id = 217, Name = "Kentucky", CountryId = 2 },
+                new Province { Id = 218, Name = "Louisiana", CountryId = 2 },
+                new Province { Id = 219, Name = "Maine", CountryId = 2 },
+                new Province { Id = 220, Name = "Maryland", CountryId = 2 },
+                new Province { Id = 221, Name = "Massachusetts", CountryId = 2 },
+                new Province { Id = 222, Name = "Michigan", CountryId = 2 },
+                new Province { Id = 223, Name = "Minnesota", CountryId = 2 },
+                new Province { Id = 224, Name = "Mississippi", CountryId = 2 },
+                new Province { Id = 225, Name = "Missouri", CountryId = 2 },
+                new Province { Id = 226, Name = "Montana", CountryId = 2 },
+                new Province { Id = 227, Name = "Nebraska", CountryId = 2 },
+                new Province { Id = 228, Name = "Nevada", CountryId = 2 },
+                new Province { Id = 229, Name = "New Hampshire", CountryId = 2 },
+                new Province { Id = 230, Name = "New Jersey", CountryId = 2 },
+                new Province { Id = 231, Name = "New Mexico", CountryId = 2 },
+                new Province { Id = 232, Name = "New York", CountryId = 2 },
+                new Province { Id = 233, Name = "North Carolina", CountryId = 2 },
+                new Province { Id = 234, Name = "North Dakota", CountryId = 2 },
+                new Province { Id = 235, Name = "Ohio", CountryId = 2 },
+                new Province { Id = 236, Name = "Oklahoma", CountryId = 2 },
+                new Province { Id = 237, Name = "Oregon", CountryId = 2 },
+                new Province { Id = 238, Name = "Pennsylvania", CountryId = 2 },
+                new Province { Id = 239, Name = "Rhode Island", CountryId = 2 },
+                new Province { Id = 240, Name = "South Carolina", CountryId = 2 },
+                new Province { Id = 241, Name = "South Dakota", CountryId = 2 },
+                new Province { Id = 242, Name = "Tennessee", CountryId = 2 },
+                new Province { Id = 243, Name = "Texas", CountryId = 2 },
+                new Province { Id = 244, Name = "Utah", CountryId = 2 },
+                new Province { Id = 245, Name = "Vermont", CountryId = 2 },
+                new Province { Id = 246, Name = "Virginia", CountryId = 2 },
+                new Province { Id = 247, Name = "Washington", CountryId = 2 },
+                new Province { Id = 248, Name = "West Virginia", CountryId = 2 },
+                new Province { Id = 249, Name = "Wisconsin", CountryId = 2 },
+                new Province { Id = 250, Name = "Wyoming", CountryId = 2 },
+                new Province { Id = 251, Name = "District of Columbia", CountryId = 2 }
+            );
         }
     }
 }
